@@ -13,17 +13,6 @@ public class codewars {
 
 		// int[] names2 = { 1, 2, 3, 4, 5, 6 };
 		// int[] arr = new int[names.length + names2.length];
-		// Integer uniqueNumber = find(names);
-		// Date current = new Date(105, 5, 4, 12, 15, 0);
-		// System.out.println(current.getYear());
-		// System.out.println(current.getMonth());
-		// System.out.println(current.getDate());
-		// System.out.println(current.getDay());
-		// String[] arr = {
-		// ";~d", "(~X", ";p)", "~4o)", ":)", ":d", "'pd", "(2)", "5dd", ":-D", "o~)",
-		// "8)", "ooD", ";)", ";~D",
-		// "p2D", "oX", ";)", "8~)", ":P", "')", "pD", "(~D", "4~x", ";D", ";)", "'D"
-		// };
 
 		// // Создание списка и добавление в него элементов массива
 		// List<String> b = new ArrayList<>();
