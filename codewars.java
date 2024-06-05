@@ -55,6 +55,11 @@ public class codewars {
 
 	}
 
+	public static int enough(int cap, int on, int wait) {
+		int freeCap = Math.max(cap, on) - Math.min(cap, on);
+		return freeCap > wait ? 0 : Math.max(wait, freeCap) - Math.min(wait, freeCap);
+	}
+
 	public static int sequence(int[] arr) {
 		if (arr.length == 0)
 			return 0;
