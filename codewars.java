@@ -11,7 +11,6 @@ import java.util.Date;
 public class codewars {
 	public static void main(String[] args) {
 
-		// int[] names2 = { 1, 2, 3, 4, 5, 6 };
 		// int[] arr = new int[names.length + names2.length];
 
 		// // Создание списка и добавление в него элементов массива
@@ -29,19 +28,53 @@ public class codewars {
 		// a.add(";~(");
 		// a.add(":~D");
 		String original = "test original";
-		String[] words = original.split(" ");
-		String str = "";
-		for (int i = 0; i < words.length; i++) {
-			char ch = words[i].charAt(0);
-			str += Character.toUpperCase(ch);
-			if (i == words.length - 1)
-				break;
-			else
-				str += ".";
-		}
-		int[] names2 = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-		System.out.println(sequence(names2));
+		int[] a = { 1, 2, 2, 5 };
+		int[] b = { 1, 3, 5 };
+		System.out.println(Arrays.toString(arrayDiff(a, b)));
 
+	}
+
+	// Вычитает один список из другого
+	public static int[] arrayDiff(int[] a, int[] b) {
+		String str = "";
+		int count = 0;
+		for (int i = 0; i < b.length; i++) {
+			for (int j = 0; j < a.length; j++) {
+				if (b[i] == a[j]) {
+					count++;
+				}
+			}
+		}
+		int[] arr = new int[a.length - count];
+
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				arr[i] ^= a[i];
+			}
+		}
+		// int j = 0;
+		// for (int i = 0; i < a.length; i++) {
+		// if (a[i] > 0) {
+		// arr[j] = a[i];
+		// j++;
+		// }
+		// }
+		return arr;
+	}
+
+	// панаграмма
+	public static boolean check(String sentence) {
+		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+		char[] uniqueChars = new char[alphabet.length];
+		sentence = sentence.toLowerCase(); // Приводим все символы к нижнему регистру для корректного сравнения
+		for (int i = 0; i < sentence.length(); i++) {
+			char ch = sentence.charAt(i);
+			if (ch >= 'a' && ch <= 'z') { // Учитываем только символы от 'a' до 'z'
+				uniqueChars[ch - 'a'] = ch;
+			}
+		}
+		return Arrays.equals(alphabet, uniqueChars);
 	}
 
 	public static int enough(int cap, int on, int wait) {
@@ -70,7 +103,6 @@ public class codewars {
 			}
 			return maxSoFar;
 		}
-
 	}
 
 	// таблица умножения
@@ -622,20 +654,6 @@ public class codewars {
 			number = number * 10 + digit;
 		}
 		return number;
-	}
-
-	public static boolean check(String sentence) {
-		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-		char[] uniqueChars = new char[alphabet.length];
-		sentence = sentence.toLowerCase(); // Приводим все символы к нижнему регистру для корректного сравнения
-		for (int i = 0; i < sentence.length(); i++) {
-			char ch = sentence.charAt(i);
-			if (ch >= 'a' && ch <= 'z') { // Учитываем только символы от 'a' до 'z'
-				uniqueChars[ch - 'a'] = ch;
-			}
-		}
-		return Arrays.equals(alphabet, uniqueChars);
 	}
 
 	public static String[] towerBuilder(int nFloors) {
