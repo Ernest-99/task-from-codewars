@@ -28,37 +28,32 @@ public class codewars {
 		// a.add(";~(");
 		// a.add(":~D");
 		String original = "test original";
-		int[] a = { 1, 2, 2, 5 };
-		int[] b = { 1, 3, 5 };
+		int[] a = { 1, 2, 2 };
+		int[] b = { 2 };
 		System.out.println(Arrays.toString(arrayDiff(a, b)));
 
 	}
 
 	// Вычитает один список из другого
 	public static int[] arrayDiff(int[] a, int[] b) {
-		String str = "";
-		int count = 0;
-		for (int i = 0; i < b.length; i++) {
-			for (int j = 0; j < a.length; j++) {
-				if (b[i] == a[j]) {
-					count++;
-				}
-			}
+		List<Integer> list = new ArrayList<>();
+		for (int value : a) {
+			list.add(value);
 		}
-		int[] arr = new int[a.length - count];
 
-		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < b.length; j++) {
-				arr[i] ^= a[i];
+		for (int i = 0; i < b.length; i++) {
+			for (int j = 0; j < list.size(); j++) {
+				if (b[i] == list.get(j)) {
+					list.remove(j);
+					j--;
+				}
+
 			}
 		}
-		// int j = 0;
-		// for (int i = 0; i < a.length; i++) {
-		// if (a[i] > 0) {
-		// arr[j] = a[i];
-		// j++;
-		// }
-		// }
+		int[] arr = new int[list.size()];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = list.get(i);
+		}
 		return arr;
 	}
 
