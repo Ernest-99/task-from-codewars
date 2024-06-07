@@ -27,11 +27,52 @@ public class codewars {
 		// a.add(";-)");
 		// a.add(";~(");
 		// a.add(":~D");
+		String testThousandA = new String(new char[1000]).replace('\0', 'a');
+		String testHundredB = new String(new char[100]).replace('\0', 'b');
+		String testTenC = new String(new char[10]).replace('\0', 'c');
+		String test1CapitalA = new String(new char[1]).replace('\0', 'A');
+		String test1d = new String(new char[1]).replace('\0', 'd');
+		String test = test1d + test1CapitalA + testTenC +
+				testHundredB + testThousandA;
 		String original = "test original";
 		int[] a = { 1, 2, 2 };
 		int[] b = { 2 };
-		System.out.println(Arrays.toString(arrayDiff(a, b)));
+		// System.out.println(duplicateCount(testThousandA));
+		// System.out.println(duplicateCount(testHundredB));
+		// System.out.println(duplicateCount(testTenC));
+		// System.out.println(duplicateCount(test1CapitalA));
+		// System.out.println(duplicateCount(test1d));
+		System.out.println(duplicateCount(test));
 
+	}
+
+	public static int duplicateCount(String text) {
+		List<Character> list = new ArrayList<>();
+		int count = 0;
+		boolean itswas = true;
+		for (int i = 0; i < text.length(); i++) {
+			char ch = Character.toLowerCase(text.charAt(i));
+			for (Character character : list) {
+				if (character == ch)
+					itswas = false;
+			}
+			if (itswas) {
+				for (int j = 0; j < text.length(); j++) {
+					char ch2 = Character.toLowerCase(text.charAt(j));
+					if (i == j)
+						continue;
+					else if (ch == ch2) {
+						count++;
+						list.add(ch);
+						break;
+					}
+				}
+			}
+			itswas = true;
+
+		}
+
+		return count;
 	}
 
 	// Вычитает один список из другого
@@ -501,27 +542,6 @@ public class codewars {
 				strReturn += "***";
 		}
 		return strReturn;
-	}
-
-	public static int duplicateCount(String text) {
-		Map<Character, Integer> map = new HashMap<>();
-		int b = 0;
-		for (int i = 0; i < text.length(); i++) {
-			char ch = text.charAt(i);
-			for (int j = 0; j < text.length(); j++) {
-				char ch2 = text.charAt(j);
-				if (Character.toLowerCase(ch) == Character.toLowerCase(ch2)) {
-					b++;
-				}
-			}
-			map.put(ch, b);
-			b = 0;
-		}
-		int count = map.entrySet().stream()
-				.filter(entry -> entry.getValue() >= 2)
-				.mapToInt(entry -> 1) // Преобразовываем каждую запись в число 1
-				.sum();
-		return count;
 	}
 
 	public static List<Long> sumDigPow(long a, long b) {
