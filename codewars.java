@@ -35,38 +35,15 @@ public class codewars {
 		String test = test1d + test1CapitalA + testTenC +
 				testHundredB + testThousandA;
 		String original = "test original";
-		int[] a = { 1, 2, 3, 4, 5, 6 };
+		int[] a = { 1, 2, 2 };
 		int[] b = { 2 };
 		// System.out.println(duplicateCount(testThousandA));
 		// System.out.println(duplicateCount(testHundredB));
 		// System.out.println(duplicateCount(testTenC));
 		// System.out.println(duplicateCount(test1CapitalA));
 		// System.out.println(duplicateCount(test1d));
-		System.out.println(solve(a));
+		System.out.println(duplicateCount(test));
 
-	}
-
-	public static int solve(int[] arr) {
-		int sum = 0;
-		boolean isPrime = true;
-		for (int i = 0; i < arr.length; i++) {
-			if (i < 2)
-				continue;
-			for (int j = 2; j <= Math.sqrt(i); j++) {
-				if (i % j == 0)
-					isPrime = false;
-
-			}
-			if (isPrime == false) {
-				isPrime = true;
-				continue;
-
-			} else
-				sum += arr[i];
-
-		}
-
-		return sum;
 	}
 
 	public static int duplicateCount(String text) {
