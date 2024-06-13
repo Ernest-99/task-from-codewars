@@ -35,15 +35,90 @@ public class codewars {
 		String test = test1d + test1CapitalA + testTenC +
 				testHundredB + testThousandA;
 		String original = "test original";
-		int[] a = { 1, 2, 2 };
-		int[] b = { 2 };
+		int[] a = {};
+		int[] b = {};
 		// System.out.println(duplicateCount(testThousandA));
 		// System.out.println(duplicateCount(testHundredB));
 		// System.out.println(duplicateCount(testTenC));
 		// System.out.println(duplicateCount(test1CapitalA));
 		// System.out.println(duplicateCount(test1d));
-		System.out.println(duplicateCount(test));
+		System.out.println(block(a, b));
 
+	}
+
+	// Учитывая два массива, в которых значения представляют собой силу каждого
+	// солдата, верните true, если вы переживете атаку, или false, если вы
+	// погибнете.
+	public static boolean block(int[] attackers, int[] defenders) {
+		boolean winOrLuse = true;
+		if (defenders.length == 0 && attackers.length == 0) {
+			return true;
+		} else if (defenders.length == 0)
+			return false;
+		else {
+			int minLengthArr = Math.min(attackers.length, defenders.length);
+			int j = 0;
+			for (int i = 0; i < minLengthArr; i++) {
+				while (j < minLengthArr) {
+					if (defenders[j] > attackers[i]) {
+						defenders[j] = defenders[j] - attackers[i];
+						attackers[i] = 0;
+						j++;
+						break;
+					} else {
+						attackers[i] = attackers[i] - defenders[j];
+						defenders[j] = 0;
+						j++;
+						break;
+					}
+				}
+			}
+			int defendersArr = 0;
+			int attackersArr = 0;
+			for (int i : defenders) {
+				if (i > 0)
+					defendersArr++;
+			}
+			for (int i : attackers) {
+				if (i > 0)
+					attackersArr++;
+			}
+			if (defendersArr > attackersArr)
+				winOrLuse = true;
+			else if (defendersArr < attackersArr) {
+				winOrLuse = false;
+			} else if (defendersArr == attackersArr) {
+				int defendersSum = 0;
+				int attackersSum = 0;
+				for (int i : defenders) {
+					defendersSum += i;
+				}
+				for (int i : attackers) {
+					attackersSum += i;
+				}
+				winOrLuse = defendersSum >= attackersSum ? true : false;
+			}
+		}
+		return winOrLuse;
+	}
+
+	public static String Longest(String s1, String s2) {
+		StringBuilder str = new StringBuilder(s1 + s2);
+		for (int i = 0; i < str.length(); i++) {
+			char ch = str.charAt(i);
+			for (int j = 0; j < str.length(); j++) {
+				char ch2 = str.charAt(j);
+				if (i == j)
+					continue;
+				else if (ch == ch2) {
+					str.deleteCharAt(j);
+					j--;
+				}
+			}
+		}
+		char[] arrayChar = str.toString().toCharArray();
+		Arrays.sort(arrayChar);
+		return new String(arrayChar);
 	}
 
 	public static int duplicateCount(String text) {
@@ -69,9 +144,7 @@ public class codewars {
 				}
 			}
 			itswas = true;
-
 		}
-
 		return count;
 	}
 
@@ -388,61 +461,6 @@ public class codewars {
 				count = 0;
 		}
 		return count;
-	}
-
-	// Учитывая два массива, в которых значения представляют собой силу каждого
-	// солдата, верните true, если вы переживете атаку, или false, если вы
-	// погибнете.
-	public static boolean block(int[] attackers, int[] defenders) {
-		boolean winOrLuse = true;
-		if (attackers.length == 0 && defenders.length == 0) {
-			winOrLuse = false;
-		} else {
-			int minLengthArr = Math.min(attackers.length, defenders.length);
-			int j = 0;
-			for (int i = 0; i < minLengthArr; i++) {
-				while (j < minLengthArr) {
-					if (defenders[j] > attackers[i]) {
-						defenders[j] = defenders[j] - attackers[i];
-						attackers[i] = 0;
-						j++;
-						break;
-					} else {
-						attackers[i] = attackers[i] - defenders[j];
-						defenders[j] = 0;
-						j++;
-						break;
-					}
-				}
-			}
-			int firstArr = 0;
-			int secondArr = 0;
-			for (int i : defenders) {
-				if (i == 0)
-					firstArr++;
-			}
-			for (int i : attackers) {
-				if (i == 0)
-					secondArr++;
-			}
-			if (firstArr > secondArr)
-				winOrLuse = false;
-			else if (firstArr == secondArr) {
-				int sum = 0;
-				int sum2 = 0;
-				for (int i : defenders) {
-					sum += i;
-				}
-				for (int i : attackers) {
-					sum2 += i;
-				}
-				winOrLuse = sum >= sum2 ? true : false;
-			}
-
-		}
-
-		return winOrLuse;
-
 	}
 
 	// Дается две точки, начала и конец, метод строит их путь
