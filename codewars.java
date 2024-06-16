@@ -34,7 +34,7 @@ public class codewars {
 		String test1d = new String(new char[1]).replace('\0', 'd');
 		String test = test1d + test1CapitalA + testTenC +
 				testHundredB + testThousandA;
-		String original = "test original";
+
 		int[] a = {};
 		int[] b = {};
 		// System.out.println(duplicateCount(testThousandA));
