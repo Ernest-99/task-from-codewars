@@ -42,8 +42,13 @@ public class codewars {
 		// System.out.println(duplicateCount(testTenC));
 		// System.out.println(duplicateCount(test1CapitalA));
 		// System.out.println(duplicateCount(test1d));
-		System.out.println(block(a, b));
+		System.out.println(rowSumOddNumbers(5));
 
+
+	}
+
+	public static int rowSumOddNumbers(int n) {
+		return n*n*n;
 	}
 
 	// Учитывая два массива, в которых значения представляют собой силу каждого
