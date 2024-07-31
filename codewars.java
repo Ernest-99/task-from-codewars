@@ -11,44 +11,31 @@ import java.util.Date;
 public class codewars {
 	public static void main(String[] args) {
 
-		// int[] arr = new int[names.length + names2.length];
+	}
 
-		// // Создание списка и добавление в него элементов массива
-		// List<String> b = new ArrayList<>();
-		// for (String s : arr) {
-		// b.add(s);
-		// }
-		// List<String> a = new ArrayList<String>();
-		// a.add(":)");
-		// a.add(":)");
-		// a.add("x-]");
-		// a.add(":ox");
-		// a.add(";-(");
-		// a.add(";-)");
-		// a.add(";~(");
-		// a.add(":~D");
-		String testThousandA = new String(new char[1000]).replace('\0', 'a');
-		String testHundredB = new String(new char[100]).replace('\0', 'b');
-		String testTenC = new String(new char[10]).replace('\0', 'c');
-		String test1CapitalA = new String(new char[1]).replace('\0', 'A');
-		String test1d = new String(new char[1]).replace('\0', 'd');
-		String test = test1d + test1CapitalA + testTenC +
-				testHundredB + testThousandA;
+	public static int intPow(int base, int exponent) {
+		int result = 1;
+		for (int i = 0; i < exponent; i++) {
+			result *= base;
+		}
+		return result;
+	}
 
-		int[] a = {};
-		int[] b = {};
-		// System.out.println(duplicateCount(testThousandA));
-		// System.out.println(duplicateCount(testHundredB));
-		// System.out.println(duplicateCount(testTenC));
-		// System.out.println(duplicateCount(test1CapitalA));
-		// System.out.println(duplicateCount(test1d));
-		System.out.println(rowSumOddNumbers(5));
-
-
+	public static int ConvertBinaryArrayToInt(List<Integer> binary) {
+		int sum = 0;
+		int j = 0;
+		for (int i = binary.size() - 1; i >= 0; i--) {
+			while (j < binary.size()) {
+				sum += binary.get(j) * Math.pow(2, i);
+				j++;
+				break;
+			}
+		}
+		return sum;
 	}
 
 	public static int rowSumOddNumbers(int n) {
-		return n*n*n;
+		return n * n * n;
 	}
 
 	// Учитывая два массива, в которых значения представляют собой силу каждого
@@ -683,15 +670,6 @@ public class codewars {
 			sum += cube;
 		}
 		return sum;
-	}
-
-	public static int ConvertBinaryArrayToInt(List<Integer> binary) {
-		// Your Code
-		int number = 0;
-		for (int digit : binary) {
-			number = number * 10 + digit;
-		}
-		return number;
 	}
 
 	public static String[] towerBuilder(int nFloors) {
