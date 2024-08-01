@@ -10,7 +10,39 @@ import java.util.Date;
 
 public class codewars {
 	public static void main(String[] args) {
+		String[] str = { "it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz" };
+		System.out.println(longestConsec(str, 15));
+	}
 
+	public static String longestConsec(String[] strarr, int k) {
+		if (k == 0 || k < 0 || strarr.length == 0 || k > strarr.length)
+			return "";
+		List<String> list = new ArrayList<>();
+
+		String str = "";
+		int counter = 0, state = 0;
+
+		for (int i = 0; i < strarr.length; i++) {
+			for (int j = i; j < strarr.length; j++) {
+				if (j < k)
+					str += strarr[j];
+				else {
+					k += 1;
+					break;
+				}
+			}
+			list.add(str);
+			str = "";
+		}
+		for (int i = 0; i < list.size(); i++) {
+			int a = list.get(i).length();
+			if (counter < a) {
+				counter = a;
+				state = i;
+
+			}
+		}
+		return list.get(state);
 	}
 
 	public static int intPow(int base, int exponent) {
