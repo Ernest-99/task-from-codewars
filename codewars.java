@@ -10,8 +10,58 @@ import java.util.Date;
 
 public class codewars {
 	public static void main(String[] args) {
-		String[] str = { "it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz" };
-		System.out.println(longestConsec(str, 15));
+		String[] strArray = { "Alex Bob", "Oliver Ced", "Alex Amber", "Sara Ava", "Ivan Ivanov" };
+		String str = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+		System.out.println(meeting(str));
+		Arrays.sort(strArray);
+		System.out.println(Arrays.toString(strArray));
+	}
+
+	public static String meeting(String s) {
+
+		// метод sort, надо почитать как он работает
+		String[] strArray = s.split(";");
+
+		for (int i = 0; i < strArray.length; i++) {
+			String str = strArray[i];
+			int indexChar = str.indexOf(":");
+
+			strArray[i] = "(" + strArray[i].substring(indexChar + 1).toUpperCase() + ", "
+					+ strArray[i].substring(0, indexChar).toUpperCase() + ")";
+
+		}
+		Arrays.sort(strArray);
+
+		// Сортировка массива с использованием лямбда-выражений
+		// Arrays.sort(strDoubleArr, (a, b) -> {
+		// int lastNameComparison = a[0].compareTo(b[0]);
+		// if (lastNameComparison != 0) {
+		// return lastNameComparison;
+		// }
+		// return a[1].compareTo(b[1]);
+		// });
+
+		// String strReturn = "";
+		// for (int i = 0; i < strDoubleArr.length; i++) {
+		// String str = "(";
+		// str += strDoubleArr[i][0] + ", ";
+		// str += strDoubleArr[i][1] + ")";
+		// strReturn += str;
+		// }
+
+		return String.join("", strArray);
+
+	}
+
+	public static String print(int n) {
+		String str = "";
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n - i - 1; j++) {
+
+			}
+		}
+		return str;
+
 	}
 
 	public static String longestConsec(String[] strarr, int k) {
