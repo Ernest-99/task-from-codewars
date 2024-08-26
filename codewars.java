@@ -10,11 +10,74 @@ import java.util.Date;
 
 public class codewars {
 	public static void main(String[] args) {
-		String[] strArray = { "Alex Bob", "Oliver Ced", "Alex Amber", "Sara Ava", "Ivan Ivanov" };
-		String str = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
-		System.out.println(meeting(str));
-		Arrays.sort(strArray);
-		System.out.println(Arrays.toString(strArray));
+		// String[] strArray = { "Alex Bob", "Oliver Ced", "Alex Amber", "Sara Ava",
+		// "Ivan Ivanov" };
+		// String str =
+		// "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+		// System.out.println(meeting(str));
+		// Arrays.sort(strArray);
+		// System.out.println(Arrays.toString(strArray));
+		int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
+		int[] b = new int[] { 1, 0, 196, 36481, 25921, 361, 20736, 38025 };
+		System.out.println(comp2(a, b));
+	}
+
+	public static boolean comp2(int[] a, int[] b) {
+		if (a == null || b == null || a.length > b.length || a.length < b.length)
+			return false;
+
+		if (a.length == 0 && b.length == 0)
+			return true;
+
+		int countInAList = 0, countInBList = 0;
+		for (int i = 0; i < a.length; i++) {
+			for (int number : a) {
+				if (a[i] == number)
+					countInAList++;
+			}
+			int indexPow = a[i] * a[i];
+			for (int j = 0; j < b.length; j++) {
+				if (indexPow == b[j]) {
+					countInBList++;
+				}
+			}
+		}
+		if (countInAList == countInBList)
+			return true;
+		else
+			return false;
+	}
+
+	public static boolean comp(int[] a, int[] b) {
+		if (a == null || b == null)
+			return false;
+		System.out.println(Arrays.toString(a));
+		System.out.println(Arrays.toString(b));
+
+		boolean compSaem = false;
+
+		if (a.length == 0 && b.length == 0)
+			compSaem = true;
+
+		for (int i = 0; i < b.length; i++) {
+			int countInBList = 0;
+			for (int number : b) {
+				if (b[i] == number)
+					countInBList++;
+			}
+			int countInAList = 0;
+			double indexPow = Math.sqrt(b[i]);
+			for (int j = 0; j < a.length; j++) {
+				if (indexPow == a[j]) {
+					countInAList++;
+				}
+			}
+			if (countInAList == countInBList)
+				compSaem = true;
+			else
+				compSaem = false;
+		}
+		return compSaem;
 	}
 
 	public static String meeting(String s) {
