@@ -19,10 +19,10 @@ public class codewars {
 		// System.out.println(Arrays.toString(strArray));
 		int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
 		int[] b = new int[] { 1, 0, 196, 36481, 25921, 361, 20736, 38025 };
-		System.out.println(comp2(a, b));
+		System.out.println(comp(a, b));
 	}
 
-	public static boolean comp2(int[] a, int[] b) {
+	public static boolean comp(int[] a, int[] b) {
 		if (a == null || b == null || a.length > b.length || a.length < b.length)
 			return false;
 
@@ -46,38 +46,6 @@ public class codewars {
 			return true;
 		else
 			return false;
-	}
-
-	public static boolean comp(int[] a, int[] b) {
-		if (a == null || b == null)
-			return false;
-		System.out.println(Arrays.toString(a));
-		System.out.println(Arrays.toString(b));
-
-		boolean compSaem = false;
-
-		if (a.length == 0 && b.length == 0)
-			compSaem = true;
-
-		for (int i = 0; i < b.length; i++) {
-			int countInBList = 0;
-			for (int number : b) {
-				if (b[i] == number)
-					countInBList++;
-			}
-			int countInAList = 0;
-			double indexPow = Math.sqrt(b[i]);
-			for (int j = 0; j < a.length; j++) {
-				if (indexPow == a[j]) {
-					countInAList++;
-				}
-			}
-			if (countInAList == countInBList)
-				compSaem = true;
-			else
-				compSaem = false;
-		}
-		return compSaem;
 	}
 
 	public static String meeting(String s) {
