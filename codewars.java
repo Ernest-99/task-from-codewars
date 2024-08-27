@@ -17,9 +17,35 @@ public class codewars {
 		// System.out.println(meeting(str));
 		// Arrays.sort(strArray);
 		// System.out.println(Arrays.toString(strArray));
-		int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
-		int[] b = new int[] { 1, 0, 196, 36481, 25921, 361, 20736, 38025 };
-		System.out.println(comp(a, b));
+		// int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
+		// int[] b = new int[] { 1, 0, 196, 36481, 25921, 361, 20736, 38025 };
+		System.out.println(Arrays.toString(productFib(4895)));
+	}
+
+	public static long[] productFib(long prod) {
+		long[] arr = new long[3];
+
+		long a = 0, b = 1;
+		long result = 0;
+
+		for (long i = 0; i < prod; i++) {
+			result = a + b;
+			a = b;
+			b = result;
+			if (a * b == prod) {
+				arr[0] = a;
+				arr[1] = b;
+				arr[2] = 1;
+				break;
+			}
+			if (a * b > prod) {
+				arr[0] = a;
+				arr[1] = b;
+				arr[2] = 0;
+				break;
+			}
+		}
+		return arr;
 	}
 
 	public static boolean comp(int[] a, int[] b) {
