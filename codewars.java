@@ -18,8 +18,65 @@ public class codewars {
 		// Arrays.sort(strArray);
 		// System.out.println(Arrays.toString(strArray));
 		// int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
-		// int[] b = new int[] { 1, 0, 196, 36481, 25921, 361, 20736, 38025 };
-		System.out.println(Arrays.toString(productFib(4895)));
+		int[] b = new int[] { 2, 2, 3, 3, 4, 4 };
+		System.out.println(solveSuperMarketQueue(b, 2));
+	}
+
+	public static int solveSuperMarketQueue(int[] customers, int n) {// Очередь в супермаркете
+
+		if (customers.length == 0)
+			return 0;
+		if (customers.length == 1)
+			return customers[0];
+
+		int sum = 0;
+		int max = customers[0];
+		for (int i : customers) {
+			if (i > max) {
+				max = i;
+			}
+			sum += i;
+		}
+		if (n > sum)
+			return max;
+		// То что выше - обработка исключений
+
+		sum = 0;
+		int[] cashRegisters = new int[n]; // Создаю кассы
+		int j = 0, a = 0;
+		for (int i = 0; i < customers.length; i++) {
+			if (a >= customers.length)
+				break;
+			while (j < cashRegisters.length) { // в этом цикле заполняю массив свободных касс
+				if (a >= customers.length)
+					break;
+				if (cashRegisters[j] == 0) {
+					cashRegisters[j] = customers[a];
+					a++;
+					j++;
+				} else
+					j++;
+			}
+			j = 0;
+
+			boolean shouldContinue = true;
+			while (shouldContinue) { // в этом цикле уменьшаются элементы массива cashRegisters "Кассы"
+				// до тех пор, пока какой-то элемент не станет нулём, но при этом текущая
+				// итерация выполнится полностью
+				boolean isZeroReached = false;
+				for (int k = 0; k < cashRegisters.length; k++) {
+					if (cashRegisters[k] > 0)
+						cashRegisters[k]--;
+					if (cashRegisters[k] == 0)
+						isZeroReached = true;
+				}
+				sum++;
+				if (isZeroReached)
+					shouldContinue = false;
+			}
+		}
+		Arrays.sort(cashRegisters);
+		return sum + cashRegisters[cashRegisters.length - 1];
 	}
 
 	public static long[] productFib(long prod) {
