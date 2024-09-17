@@ -18,8 +18,34 @@ public class codewars {
 		// Arrays.sort(strArray);
 		// System.out.println(Arrays.toString(strArray));
 		// int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
-		int[] b = new int[] { 2, 2, 3, 3, 4, 4 };
-		System.out.println(solveSuperMarketQueue(b, 2));
+		int[] b = new int[] { 2, 2, 3, 2, 3, 4, 5, 4 };
+		System.out.println(Arrays.toString(deleteNth(b, 2)));
+	}
+
+	public static int[] deleteNth(int[] elements, int maxOccurrences) {
+		List<Integer> list = new ArrayList<>();
+		for (int i : elements) {
+			list.add(i);
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			int counter = 0;
+			for (int j = 0; j < list.size(); j++) {
+				if (list.get(j).equals(list.get(i))) {
+					counter++;
+					if (counter > maxOccurrences) {
+						list.remove(j);
+						j--;
+					}
+				}
+			}
+		}
+
+		int[] arr = new int[list.size()];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = list.get(i);
+		}
+		return arr;
 	}
 
 	public static int solveSuperMarketQueue(int[] customers, int n) {// Очередь в супермаркете
