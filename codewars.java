@@ -18,8 +18,24 @@ public class codewars {
 		// Arrays.sort(strArray);
 		// System.out.println(Arrays.toString(strArray));
 		// int[] a = new int[] { 0, -14, 191, 161, 19, 144, 195, 1 };
-		int[] b = new int[] { 2, 2, 3, 2, 3, 4, 5, 4 };
-		System.out.println(Arrays.toString(deleteNth(b, 2)));
+		// int[] b = new int[] { 2, 2, 3, 2, 3, 4, 5, 4 };
+		System.out.println(order("is2 Thi1s T4est 3a"));
+	}
+
+	public static String order(String words) {
+		if (words.equals(""))
+			return "";
+		String[] str = words.split(" ");
+		String[] arrStr = new String[str.length];
+		for (int i = 0; i < str.length; i++) {
+			for (int j = 0; j < str[i].length(); j++) {
+				char ch = str[i].charAt(j);
+				if (Character.isDigit(ch)) {
+					arrStr[ch - '0' - 1] = str[i];
+				}
+			}
+		}
+		return String.join(" ", arrStr);
 	}
 
 	public static int[] deleteNth(int[] elements, int maxOccurrences) {
